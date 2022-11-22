@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+ 
+{% block content %}
+{{ super() }}
+    <h1 align="center">ТРЕНИРОВКИ</h1>
+  
+
+    <table  align="center" class="table1"
+        cellspacing="21" cellpadding="21">
+        </caption>
+  
+        <thead>
+            <tr>
+                <th><div class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href={{ url_for('vhera') }}>{{dt_now[0]}} {{dt_now[1]}}</a></div></th>
+                <th><div class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href={{ url_for('tooday') }}>{{dt_now[2]}} {{dt_now[3]}}</a></div></th>
+                <th><div class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href={{ url_for('yestoday') }}>{{dt_now[4]}} {{dt_now[5]}}</a></div></th>
+            </tr>
+            <tr>
+                {% if tren[0]|length  != 14 %}
+                <th>{% for p in tren[0] %}
+                    <p class="annonce">{{p.tren[:10]+"..."}}</p></a>
+                {% endfor %}
+                {% else %}
+                    <th>{{"ТРЕНИРОВОК НЕТ"}}</th>
+                {% endif %}
+                {% if tren[1]|length  != 14 %}
+                <th>{% for p in tren[1] %}
+                    <p class="annonce">{{p.tren[:10]+"..."}}</p></a>
+                {% endfor %}
+                {% else %}
+                    <th>{{"ТРЕНИРОВОК НЕТ"}}</th>
+                {% endif %}
+                {% if tren[2]|length  != 14 %}
+                <th>{% for p in tren[2] %}
+                    <p class="annonce">{{p.tren[:10]+"..."}}</p></a>
+                {% endfor %}
+                {% else %}
+                    <th>{{"ТРЕНИРОВОК НЕТ"}}</th>
+                {% endif %}
+{% endblock %}

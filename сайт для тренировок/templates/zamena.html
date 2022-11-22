@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+ 
+{% block content %}
+{{ super() }}
+
+{% for cat, msg in get_flashed_messages(True) %}
+<div class="flash {{cat}}">{{msg}}</div>
+{% endfor %}
+<table>
+<tr>
+<th>
+<div class="profile-ava1"><img src="{{ url_for('userava') }}"></div>
+<div class="profile-load">
+<form action="{{url_for('upload')}}" method="POST" enctype="multipart/form-data">
+<input type="file" name="file">
+<input type="submit" value="Загрузить">
+</th>
+</form> 
+</div>
+<th>
+
+Имя: {{ current_user.getName() }}
+<br>
+Email: {{ current_user.getEmail() }}
+<br>
+Пол: {{ current_user.getSex() }}
+<br>
+Возвраст: {{ current_user.getAge() }}
+<br>
+Вес: {{ current_user.getVes() }}
+<br>
+Цель: {{ current_user.getTargets() }}
+<br>
+Id Тренера: {{ current_user.getTrener() }}
+<br>
+</th>
+{% endblock %}

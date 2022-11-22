@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+ 
+{% block content %}
+{{ super() }}
+{% for cat, msg in get_flashed_messages(True) %}
+<div class="flash {{cat}}">{{msg}}</div>
+{% endfor %}
+<br>
+    <br>
+    <br>
+    <br>
+    <br>
+<form action="{{ url_for('tren') }}" method="post" class="form-contact">
+{{ form.hidden_tag() }}
+{% for field in form if field.name not in ['csrf_token', 'submit', 'id_pol'] -%}
+         <br>
+         {{ field.label() }} 
+         {% if field.errors %}
+                   {{ field(class="invalid") }}
+         <span class="invalid-feedback">
+                   {% for e in field.errors %}
+                   {{ e }}
+                   {% endfor %}
+         </span>
+         {% else %}
+                   {{ field() }}
+         {% endif %}
+{% endfor %}
+{{ form.submit() }}
+</form>
+{% endblock %}

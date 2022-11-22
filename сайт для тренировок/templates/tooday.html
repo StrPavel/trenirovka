@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+{% block content %}
+{{ super() }}
+<center><H2>{{dt_now}}</H2>
+<h2>Список Тренировок</h2></center>
+<ul class="list-posts">
+{% if tren|length != 14 %}
+{% for p in tren %}
+<li>
+<p class="annonce">{{p.tren + "   "}}<a href = {{p.id}}>Выполнено</a>
+</li></p>
+{% endfor %}
+</ul>
+{% else %}
+<h3>Все выполнено</h3>
+{% endif %}
+{% endblock %}

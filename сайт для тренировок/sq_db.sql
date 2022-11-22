@@ -1,0 +1,19 @@
+CREATE TABLE  IF NOT EXISTS users(
+    id integer PRIMARY KEY AUTOINCREMENT,
+    name TEXT NOT NULL,
+    email TEXT NOT NULL,
+    sex TEXT DEFAULT NULL,
+    age INTEGER DEFAULT NULL,
+    targets text DEFAULT NULL,
+    ves INTEGER DEFAULT NULL,
+    trener INTEGER DEFAULT NULL,
+    psw TEXT NOT NULL,
+    avatar BLOB DEFAULT NULL
+    );
+CREATE TABLE tren(
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    tren TEXT NOT NULL,
+    dates DATA NOT NULL,
+    id_users INTEGER NOT NULL,
+    stat INTEGER
+)
